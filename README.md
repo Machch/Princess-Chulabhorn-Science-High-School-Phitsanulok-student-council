@@ -1,1 +1,1 @@
-# Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council
+# PrincessChulabhornScienceHighSchoolPhitsanulok-studentcouncil
