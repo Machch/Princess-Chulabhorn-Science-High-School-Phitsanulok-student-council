@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>เลขานุการ</title>
+    <style>
+        /* สไตล์สำหรับแถบด้านบน */
+        .top-bar {
+            background-color: #302e7c;
+            color: beige;
+            padding: 10px;
+            text-align: right;
+            font-size: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* สไตล์สำหรับ Hamburger Menu */
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu div {
+            width: 30px;
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        /* เมนู Dropdown */
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background-color: #302e7c;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown a,
+        .dropdown .submenu {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-align: left;
+        }
+
+        .dropdown a:hover {
+            background-color: #ee4136;
+        }
+
+        /* ซ่อน Sub-menu */
+        .submenu-container {
+            display: none;
+            margin-left: 20px;
+        }
+
+        .submenu-container a {
+            padding: 5px 15px;
+            background-color: #3d39a1;
+        }
+
+        .submenu-container a:hover {
+            background-color: #ee4136;
+        }
+
+        /* เนื้อหา */
+        .content {
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .content img {
+            display: block;
+            margin: 20px auto;
+            max-width: 30%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* รองประธาน */
+        .secretaries {
+            display: flex;
+            justify-content: space-around; /* จัดระเบียบให้รูปภาพอยู่ในแถวเดียวกัน */
+            gap: 20px; /* ระยะห่างระหว่างภาพ */
+            margin-top: 30px;
+        }
+
+        .secretary {
+            text-align: center;
+            flex: 1;
+        }
+
+        .secretary img {
+            max-width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .content .name, .secretary .name {
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .content .role, .secretary .role {
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- แถบด้านบน -->
+    <div class="top-bar">
+        <div></div>
+        <div class="menu" onclick="toggleDropdown()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown" id="dropdown-menu">
+            <a href="index.html">หน้าหลัก</a>
+            <a href="nextpage.html">อาจารย์ที่ปรึกษาสภา</a>
+            <a href="#" onclick="toggleSubmenu(event)">คณะกรรมการสภานักเรียน</a>
+            <div class="submenu-container" id="submenu">
+                <a href="คณะกรรมการสภานักเรียน.html">โครงสร้างคณะกรรมการสภานักเรียน</a>
+                <a href="ประธานและรองประธาน.html">ประธาน รองประธาน</a>
+                <a href="เลขานุการ.html">เลขานุการ</a>
+                <a href="ประชาสัมพันธ์.html">ประชาสัมพันธ์</a>
+                <a href="เหรัญญิกและพัสดุ.html">เหรัญญิกและพัสดุ</a>
+                <a href="กิจกรรมและนันทนาการ.html">กิจกรรมและนันทนาการ</a>
+                <a href="ดนตรีและกีฬา.html">ดนตรีและกีฬา</a>
+                <a href="พิธีการ.html">พิธีการ</a>
+                <a href="สวัสดิการและพยาบาล.html">สวัสดิการและพยาบาล</a>
+                <a href="วิชาการ.html">วิชาการ</a>
+                <a href="ปกครอง.html">ปกครอง</a>
+                <a href="โสตทัศนูปกรณ์.html">โสตทัศนูปกรณ์</a>
+                <a href="อาคารและสถานที่.html">อาคารและสถานที่</a>
+                <a href="ปฏิคม.html">ปฏิคม</a>
+                <a href="ศิลปกรรม.html">ศิลปกรรม</a>
+            </div>
+            <a href="activities.html">กิจกรรม</a>
+            <a href="contact.html">ติดต่อ</a>
+        </div>
+    </div>
+
+    <!-- เนื้อหา -->
+    <div class="content">
+        <h1>กิจกรรมและนันทนาการ</h1>
+        <div class="secretaries">
+            <div class="secretary">
+                <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/LINE_ALBUM_%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%9C%E0%B8%B1%E0%B8%87%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%A0%E0%B8%B2_241122_17.jpg?raw=true" width="50%">
+                <div class="name">นายฐิติพงศ์ วิบูลรัตน์</div>
+                <div class="role">กิจกรรมและนันทนาการ</div>
+            </div>
+            <div class="secretary">
+                <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/LINE_ALBUM_%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%9C%E0%B8%B1%E0%B8%87%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%A0%E0%B8%B2_241122_34.jpg?raw=true" width="50%">
+                <div class="name">นางสาวสุพิชญา มหนิธิวงศ์</div>
+                <div class="role">กิจกรรมและนันทนาการ</div>
+            </div>
+            <div class="secretary">
+                <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/LINE_ALBUM_%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%9C%E0%B8%B1%E0%B8%87%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%A0%E0%B8%B2_241122_39.jpg?raw=true" width="50%">
+                <div class="name">นางสาวพิมพ์ชนก รอสวัสดิ์</div>
+                <div class="role">กิจกรรมและนันทนาการ</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ฟังก์ชันสำหรับแสดง/ซ่อนเมนูหลัก
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown-menu');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // ฟังก์ชันสำหรับแสดง/ซ่อน Sub-menu
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const submenu = document.getElementById('submenu');
+            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+
+</html>
