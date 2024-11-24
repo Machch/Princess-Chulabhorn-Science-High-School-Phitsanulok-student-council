@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pcshspl</title>
+    <style>
+        /* สไตล์สำหรับแถบด้านบน */
+        .top-bar {
+            background-color: #302e7c;
+            color: beige;
+            padding: 10px 20px; /* ปรับ padding ให้มีระยะห่างจากขอบ */
+            text-align: right;
+            font-size: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%; /* ทำให้แถบขยายเต็มความกว้างของหน้าจอ */
+            box-sizing: border-box; /* ให้ padding ไม่ทำให้แถบเกินขอบ */
+            position: fixed; /* ทำให้แถบอยู่ด้านบนของหน้าจอเสมอ */
+            top: 0;
+            left: 0;
+            z-index: 1000; /* ให้แถบอยู่เหนือเนื้อหาทั้งหมด */
+        }
+
+        /* สไตล์สำหรับ Hamburger Menu */
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu div {
+            width: 30px;
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        /* เมนู Dropdown */
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background-color: #302e7c;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown a,
+        .dropdown .submenu {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-align: left;
+        }
+
+        .dropdown a:hover {
+            background-color: #ee4136;
+        }
+
+        /* ซ่อน Sub-menu */
+        .submenu-container {
+            display: none;
+            margin-left: 20px;
+        }
+
+        .submenu-container a {
+            padding: 5px 15px;
+            background-color: #3d39a1;
+            text-align: left;
+        }
+
+        .submenu-container a:hover {
+            background-color: #ee4136;
+        }
+
+        /* สไตล์สำหรับแถบด้านล่าง */
+        .footer {
+            background-color: #302e7c;
+            color: beige;
+            text-align: right;
+            padding: 15px;
+            font-size: 18px;
+            width: 100%;
+            box-sizing: border-box;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* สไตล์สำหรับเนื้อหาตรงกลาง */
+        .content {
+            text-align: center;
+            font-size: 24px;
+            padding: 50px;
+            margin-top: 30px; /* ลดระยะห่างจากด้านบน */
+            margin-bottom: 100px; /* เพิ่มพื้นที่ด้านล่างเพื่อไม่ให้เนื้อหาทับกับ footer */
+        }
+
+        .content p {
+            margin: 20px 0;
+        }
+
+        /* การจัดรูปแบบสำหรับส่วนรูปภาพ */
+        .image-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px; /* เพิ่มระยะห่างระหว่างรูปภาพ */
+            margin: 20px auto;
+            flex-wrap: wrap; /* ให้รูปภาพขึ้นบรรทัดใหม่หากพื้นที่ไม่พอ */
+            max-width: 90%; /* จำกัดขนาดพื้นที่ของรูปภาพ */
+        }
+
+        .image-box {
+            text-align: center;
+            max-width: 600px; /* จำกัดขนาดกล่องรูปภาพ */
+        }
+
+        .image-box img {
+            width: 100%; /* ปรับขนาดรูปภาพให้พอดีกับกล่อง */
+            max-width: 600px; /* กำหนดขนาดสูงสุด */
+            height: auto; /* ให้ปรับขนาดตามอัตราส่วนเดิม */
+            border-radius: 10px; /* เพิ่มความโค้งมุมของรูปภาพ */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        /* เอฟเฟกต์เมื่อเลื่อนเมาส์บนรูปภาพ */
+        .image-box img:hover {
+            transform: scale(1.05); /* ขยายรูปภาพเล็กน้อย */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
+        }
+
+        .image-box p {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #302e7c;
+            font-weight: bold;
+        }
+
+        .image-box a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .image-box a:hover p {
+            color: #ee4136;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- แถบด้านบน -->
+    <div class="top-bar">
+        <div></div>
+        <div class="menu" onclick="toggleDropdown()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown" id="dropdown-menu">
+            <a href="index.html">หน้าหลัก</a>
+            <a href="nextpage.html">อาจารย์ที่ปรึกษาสภา</a>
+            <a href="#" onclick="toggleSubmenu(event)">คณะกรรมการสภานักเรียน</a>
+            <div class="submenu-container" id="submenu">
+                <a href="คณะกรรมการสภานักเรียน.html">โครงสร้างคณะกรรมการสภานักเรียน</a>
+                <a href="ประธานและรองประธาน.html">ประธาน รองประธาน</a>
+                <a href="เลขานุการ.html">เลขานุการ</a>
+                <a href="ประชาสัมพันธ์.html">ประชาสัมพันธ์</a>
+                <a href="เหรัญญิกและพัสดุ.html">เหรัญญิกและพัสดุ</a>
+                <a href="กิจกรรมและนันทนาการ.html">กิจกรรมและนันทนาการ</a>
+                <a href="ดนตรีและกีฬา.html">ดนตรีและกีฬา</a>
+                <a href="พิธีการ.html">พิธีการ</a>
+                <a href="สวัสดิการและพยาบาล.html">สวัสดิการและพยาบาล</a>
+                <a href="วิชาการ.html">วิชาการ</a>
+                <a href="ปกครอง.html">ปกครอง</a>
+                <a href="โสตทัศนูปกรณ์.html">โสตทัศนูปกรณ์</a>
+                <a href="อาคารและสถานที่.html">อาคารและสถานที่</a>
+                <a href="ปฏิคม.html">ปฏิคม</a>
+                <a href="ศิลปกรรม.html">ศิลปกรรม</a>
+            </div>
+            <a href="activities.html">กิจกรรม</a>
+        </div>
+    </div>
+
+    <!-- เนื้อหาตรงกลาง -->
+    <div class="content">
+        <h1>กิจกรรม</h1>
+
+        <!-- ส่วนสำหรับรูปภาพและข้อความใต้ภาพ -->
+        <div class="image-links">
+            <!-- ช่องที่ 1 -->
+            <div class="image-box">
+                <a href="activity1.html">
+                    <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/IMG_2098.jpg?raw=true" alt="กิจกรรมวันฮาโลวีน">
+                    <p>กิจกรรมวันฮาโลวีน</p>
+                </a>
+            </div>
+
+            <!-- ช่องที่ 2 -->
+            <div class="image-box">
+                <a href="activity2.html">
+                    <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/12%20(163).jpg?raw=true" alt="กิจกรรมวันลอยกระทง">
+                    <p>กิจกรรมวันลอยกระทง</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- แถบด้านล่าง -->
+    <div class="footer">
+        <p>คณะกรรมการสภานักเรียน</p>
+        <p>โรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย พิษณุโลก</p>
+    </div>
+
+    <script>
+        // ฟังก์ชันสำหรับแสดง/ซ่อนเมนูหลัก
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown-menu');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // ฟังก์ชันสำหรับแสดง/ซ่อน Sub-menu
+        function toggleSubmenu(event) {
+            event.preventDefault(); // ป้องกันการทำงานลิงก์
+            const submenu = document.getElementById('submenu');
+            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+
+</html>
