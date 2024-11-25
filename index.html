@@ -4,19 +4,40 @@
 <head>
     <title>Pcshspl</title>
     <style>
-        /* สไตล์สำหรับแถบด้านบน */
+        /* ตั้งค่าพื้นฐาน */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* โครงสร้างหลัก */
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* แถบด้านบน */
         .top-bar {
             background-color: #302e7c;
             color: beige;
-            padding: 10px;
+            padding: 10px 20px ;
             text-align: right;
             font-size: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            bottom: 0;
         }
 
-        /* สไตล์สำหรับ Hamburger Menu */
+        /* Hamburger Menu */
         .menu {
             display: flex;
             flex-direction: column;
@@ -57,7 +78,6 @@
             background-color: #ee4136;
         }
 
-        /* ซ่อน Sub-menu */
         .submenu-container {
             display: none;
             margin-left: 20px;
@@ -77,38 +97,35 @@
         .footer {
             background-color: #302e7c;
             color: beige;
-            text-align: right;
-            padding: 15px;
+            padding: 20px 30px ;
+            text-align: center;
             font-size: 18px;
             width: 100%;
             box-sizing: border-box;
             position: relative;
-            bottom: 0;
         }
 
-        /* สไลด์โชว์ */
+        /* ภาพและสไลด์โชว์ */
         .slideshow-container-wrapper {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 30px;
             padding: 20px;
+            margin-top: 100px; /* เว้นช่องว่างสำหรับแถบด้านบน */
         }
 
-        /* ภาพด้านข้าง */
         .side-image {
             width: 450px;
             height: 450px;
             object-fit: cover;
         }
 
-        /* สไลด์ภาพ */
         .slideshow-container {
             position: relative;
             width: 900px;
             height: 600px;
             overflow: hidden;
-            margin: auto;
         }
 
         .slide {
@@ -122,80 +139,29 @@
             transition: opacity 0.5s ease;
         }
 
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         .slide.active {
             display: block;
         }
 
-        /* ปรับ opacity ของภาพเมื่อเมาส์ชี้ */
-        .slide:hover {
-            opacity: 0.8; /* ลดแสงของภาพ */
-        }
-
-        /* ปุ่มเลื่อน */
         .prev, .next {
             cursor: pointer;
             position: absolute;
             top: 50%;
-            width: auto;
             padding: 10px;
-            margin-top: -22px;
             color: white;
             font-weight: bold;
             font-size: 18px;
-            border-radius: 0 3px 3px 0;
             user-select: none;
         }
 
         .next {
             right: 0;
-            border-radius: 3px 0 0 3px;
         }
 
         .prev:hover, .next:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
 
-        /* สไตล์สำหรับข้อความที่แสดงเมื่อเมาส์ชี้ */
-        .image-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-
-        .hover-text {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            font-size: 20px;
-            text-align: center;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .image-wrapper:hover .hover-text {
-            display: flex;
-        }
-
-        /* ปรับขนาดรูปตรงกลาง */
-        .center-image {
-            width: 800px;
-            height: 700px;
-            object-fit: cover;
-        }
-
-        /* เพิ่มสไตล์สำหรับข้อความที่อยู่บนสไลด์ */
         .slide-text {
             position: absolute;
             top: 50%;
@@ -203,16 +169,9 @@
             transform: translate(-50%, -50%);
             color: white;
             font-size: 24px;
-            font-weight: bold;
-            background-color: rgba(0, 0, 0, 0.0);
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 10px;
             border-radius: 10px;
-            display: none;
-            transition: opacity 0.5s ease;
-        }
-
-        .slide:hover .slide-text {
-            display: block;
         }
     </style>
 </head>
@@ -251,16 +210,14 @@
         </div>
     </div>
 
-    <!-- ภาพ -->
-    <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/%E0%B9%80%E0%B8%A7%E0%B9%87%E0%B8%9A%E0%B8%AA%E0%B8%A0%E0%B8%B2.pptx%20(2).png?raw=true" width="100%">
-
-    <!-- ภาพสไลด์ -->
-    <div class="slideshow-container-wrapper">
+     <!-- ภาพ -->
+     <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/%E0%B9%80%E0%B8%A7%E0%B9%87%E0%B8%9A%E0%B8%AA%E0%B8%A0%E0%B8%B2.pptx%20(2).png?raw=true" width="100%">
+     <!-- ภาพสไลด์ -->
+     <div class="slideshow-container-wrapper">
         <!-- ภาพด้านซ้าย -->
         <div class="image-wrapper">
             <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/%E0%B8%94%E0%B8%B5%E0%B9%84%E0%B8%8B%E0%B8%99%E0%B9%8C%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%20(1)-Photoroom.png?raw=true" alt="Side Left" class="side-image">
         </div>
-        
         <!-- สไลด์ -->
         <div class="slideshow-container">
             <div class="slide active">
@@ -283,6 +240,7 @@
         <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/%E0%B8%94%E0%B8%B5%E0%B9%84%E0%B8%8B%E0%B8%99%E0%B9%8C%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD-Photoroom.png?raw=true" alt="Side Right" class="side-image">
     </div>
 
+
     <!-- แถบด้านล่าง -->
     <div class="footer">
         <p>คณะกรรมการสภานักเรียน</p>
@@ -290,6 +248,17 @@
     </div>
 
     <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown-menu');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const submenu = document.getElementById('submenu');
+            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+        }
+
         let currentSlide = 0;
 
         function changeSlide(direction) {
@@ -297,19 +266,6 @@
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + direction + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
-        }
-
-        // ฟังก์ชันสำหรับแสดง/ซ่อนเมนูหลัก
-        function toggleDropdown() {
-            const dropdown = document.getElementById('dropdown-menu');
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-        }
-
-        // ฟังก์ชันสำหรับแสดง/ซ่อน Sub-menu
-        function toggleSubmenu(event) {
-            event.preventDefault(); // ป้องกันการทำงานลิงก์
-            const submenu = document.getElementById('submenu');
-            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
         }
     </script>
 </body>
