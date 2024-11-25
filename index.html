@@ -25,7 +25,7 @@
         .top-bar {
             background-color: #302e7c;
             color: beige;
-            padding: 10px 20px ;
+            padding: 10px 20px;
             text-align: right;
             font-size: 24px;
             display: flex;
@@ -97,7 +97,7 @@
         .footer {
             background-color: #302e7c;
             color: beige;
-            padding: 20px 30px ;
+            padding: 20px 30px;
             text-align: center;
             font-size: 18px;
             width: 100%;
@@ -112,7 +112,7 @@
             align-items: center;
             gap: 30px;
             padding: 20px;
-            margin-top: 100px; /* เว้นช่องว่างสำหรับแถบด้านบน */
+            margin-top: 100px;
         }
 
         .side-image {
@@ -143,7 +143,8 @@
             display: block;
         }
 
-        .prev, .next {
+        .prev,
+        .next {
             cursor: pointer;
             position: absolute;
             top: 50%;
@@ -158,7 +159,8 @@
             right: 0;
         }
 
-        .prev:hover, .next:hover {
+        .prev:hover,
+        .next:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
 
@@ -169,10 +171,30 @@
             transform: translate(-50%, -50%);
             color: white;
             font-size: 24px;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0);
             padding: 10px;
             border-radius: 10px;
+            opacity: 0; /* ทำให้ข้อความเริ่มต้นซ่อนอยู่ */
+            transition: opacity 0.3s ease;
         }
+
+        /* ให้แสดงข้อความเมื่อเมาส์ชี้ไปที่ภาพ */
+        .slide:hover .slide-text {
+            opacity: 1;
+        }
+
+        /* ขนาดภาพในสไลด์ */
+        .slideshow-container img {
+            width: 900px;
+            height: 600px;
+            object-fit: cover;
+        }
+        /* ให้แสดงข้อความและเพิ่มเอฟเฟกต์ดรอปแสงเมื่อเมาส์ชี้ไปที่ภาพ */
+        .slide:hover .slide-text {
+        opacity: 5;
+        filter: brightness(5); /* ปรับแสงของข้อความให้มืดลงเมื่อเมาส์ชี้ */
+        }
+
     </style>
 </head>
 
@@ -210,10 +232,10 @@
         </div>
     </div>
 
-     <!-- ภาพ -->
-     <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/%E0%B9%80%E0%B8%A7%E0%B9%87%E0%B8%9A%E0%B8%AA%E0%B8%A0%E0%B8%B2.pptx%20(2).png?raw=true" width="100%">
-     <!-- ภาพสไลด์ -->
-     <div class="slideshow-container-wrapper">
+    <!-- ภาพ -->
+    <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/%E0%B9%80%E0%B8%A7%E0%B9%87%E0%B8%9A%E0%B8%AA%E0%B8%A0%E0%B8%B2.pptx%20(2).png?raw=true" width="100%">
+    <!-- ภาพสไลด์ -->
+    <div class="slideshow-container-wrapper">
         <!-- ภาพด้านซ้าย -->
         <div class="image-wrapper">
             <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/%E0%B8%94%E0%B8%B5%E0%B9%84%E0%B8%8B%E0%B8%99%E0%B9%8C%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%20(1)-Photoroom.png?raw=true" alt="Side Left" class="side-image">
@@ -239,7 +261,6 @@
         <!-- ภาพด้านขวา -->
         <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/%E0%B8%94%E0%B8%B5%E0%B9%84%E0%B8%8B%E0%B8%99%E0%B9%8C%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD-Photoroom.png?raw=true" alt="Side Right" class="side-image">
     </div>
-
 
     <!-- แถบด้านล่าง -->
     <div class="footer">
