@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>อาจารย์ที่ปรึกษาสภา</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-bar {
+            background-color: #302e7c;
+            color: beige;
+            padding: 10px 20px;
+            text-align: right;
+            font-size: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu div {
+            width: 30px;
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background-color: #302e7c;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown a,
+        .dropdown .submenu {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-align: left;
+        }
+
+        .dropdown a:hover {
+            background-color: #ee4136;
+        }
+
+        .submenu-container {
+            display: none;
+            margin-left: 20px;
+        }
+
+        .submenu-container a {
+            padding: 5px 15px;
+            background-color: #3d39a1;
+        }
+
+        .submenu-container a:hover {
+            background-color: #ee4136;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            margin-top: 60px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .presidents-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin-top: 30px;
+        }
+
+        .person {
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .person img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .name {
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .role {
+            font-size: 15px;
+            color: #555;
+        }
+
+        .footer {
+            background-color: #302e7c;
+            color: beige;
+            text-align: center;
+            padding: 15px;
+            font-size: 18px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-bar">
+        <div></div>
+        <div class="menu" onclick="toggleDropdown()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown" id="dropdown-menu">
+            <a href="index.html">หน้าหลัก</a>
+            <a href="อาจารย์ที่ปรึกษาสภา.html">อาจารย์ที่ปรึกษาสภา</a>
+            <a href="#" onclick="toggleSubmenu(event)">คณะกรรมการสภานักเรียน</a>
+            <div class="submenu-container" id="submenu">
+                <a href="president.html">โครงสร้างคณะกรรมการสภานักเรียน</a>
+                <a href="ประธานและรองประธาน.html">ประธาน รองประธาน</a>
+                <a href="เลขานุการ.html">เลขานุการ</a>
+                <a href="ประชาสัมพันธ์.html">ประชาสัมพันธ์</a>
+                <a href="เหรัญญิกและพัสดุ.html">เหรัญญิกและพัสดุ</a>
+                <a href="กิจกรรมและนันทนาการ.html">กิจกรรมและนันทนาการ</a>
+                <a href="ดนตรีและกีฬา.html">ดนตรีและกีฬา</a>
+                <a href="พิธีการ.html">พิธีการ</a>
+                <a href="สวัสดิการและพยาบาล.html">สวัสดิการและพยาบาล</a>
+                <a href="วิชาการ.html">วิชาการ</a>
+                <a href="ปกครอง.html">ปกครอง</a>
+                <a href="โสตทัศนูปกรณ์.html">โสตทัศนูปกรณ์</a>
+                <a href="อาคารและสถานที่.html">อาคารและสถานที่</a>
+                <a href="ปฏิคม.html">ปฏิคม</a>
+                <a href="ศิลปกรรม.html">ศิลปกรรม</a>
+            </div>
+            <a href="กิจกรรม.html">กิจกรรม</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>อาจารย์ที่ปรึกษาสภา</h1>
+        <div class="presidents-container">
+            <div class="person">
+                <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/LINE_ALBUM_%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%9C%E0%B8%B1%E0%B8%87%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%A0%E0%B8%B2_241122_23.jpg?raw=true" alt="ประธาน">
+                <div class="name">นายพิชณุตม์ มาพิทักษ์</div>
+                <div class="role">อาจารย์ที่ปรึกษาสภา</div>
+            </div>
+
+            <div class="person">
+                <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/heart_taksutee.jpg?raw=true" alt="รองประธานคนที่ 1">
+                <div class="name">ว่าที่ร้อยตรี ทักษ์สุธี มูลหงษ์</div>
+                <div class="role">อาจารย์ที่ปรึกษาสภา</div>
+            </div>
+
+            <div class="person">
+                <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/LINE_ALBUM_%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%9C%E0%B8%B1%E0%B8%87%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%A0%E0%B8%B2_241122_22.jpg?raw=true" alt="รองประธานคนที่ 2">
+                <div class="name">นางสาวเพียงไพลิน โพธิ์ทอง</div>
+                <div class="role">อาจารย์ที่ปรึกษาสภา</div>
+            </div>
+
+            <div class="person">
+                <img src="https://github.com/Machch/Princess-Chulabhorn-Science-High-School-Phitsanulok-student-council/blob/main/%E0%B8%A3%E0%B8%B9%E0%B8%9B/social_radarad.jpg?raw=true" alt="รองประธานคนที่ 3">
+                <div class="name">นางสาวรดารัตน์ สระทองดี</div>
+                <div class="role">อาจารย์ที่ปรึกษาสภา</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>คณะกรรมการสภานักเรียน</p>
+        <p>โรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย พิษณุโลก</p>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown-menu');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const submenu = document.getElementById('submenu');
+            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+
+</html>
